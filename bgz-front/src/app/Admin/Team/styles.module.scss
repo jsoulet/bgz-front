@@ -1,0 +1,19 @@
+@import '../../../styles/base.module';
+
+.scoreboard {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.name {
+  text-align: center;
+}
+
+.ketchup {
+  color: $ketchup;
+}
+
+.mayo {
+  color: $mayo;
+}

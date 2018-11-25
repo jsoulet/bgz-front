@@ -1,0 +1,9 @@
+$font-path: '/assets/fonts' !default;
+
+@font-face {
+	font-family: Burger;
+	src: url('#{$font-path}/Horsal__.ttf');
+}
+
+$burger: Burger, Helvetica, Arial, sans-serif;
+$default: Helvetica, Arial, sans-serif;

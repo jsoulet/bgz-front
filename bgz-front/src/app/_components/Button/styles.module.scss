@@ -1,0 +1,28 @@
+@import '../../../styles/base.module';
+
+.button {
+  border: none;
+  font-size: 1rem;
+  border: 1px solid;
+  padding: $m;
+  &.ketchup {
+    border-color: $ketchup;
+    background: $ketchup;
+    color: $white;
+  }
+  &.mayo {
+    border-color: $mayo;
+    background: $mayo;
+    color: $white;
+  }
+  &.secondary {
+    background: transparent;
+    border: 1px solid;
+    &.ketchup {
+      color: $ketchup;
+    }
+    &.mayo {
+      color: $mayo;
+    }
+  }
+}

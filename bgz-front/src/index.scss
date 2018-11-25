@@ -1,0 +1,15 @@
+@import './styles/base.module';
+html {
+  font-size: $font-size;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  box-sizing: border-box;
+}

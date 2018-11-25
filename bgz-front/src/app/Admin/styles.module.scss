@@ -1,0 +1,12 @@
+.admin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+  justify-items: stretch;
+
+  background-color: black;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
