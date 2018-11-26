@@ -7,7 +7,7 @@ import Player from './app/Player';
 const App = () =>
   <Router>
     <div>
-      <Route path='/' exact component={Player}/>
+      <Route path='/:gameId' exact component={Player}/>
       <Route path='/admin/:gameId' component={Admin}/>
     </div>
   </Router>;

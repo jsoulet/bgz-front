@@ -8,7 +8,7 @@ import Button from '../../_components/Button';
 import styles from './styles.module.scss';
 import { TEAMS } from './constants';
 
-const Team = ({score, onIncrease, onDecrease, name }) => {
+const Team = ({score, onIncrease, onDecrease, name, isReadOnly }) => {
   return <div className={
       cn(
       styles.team,
@@ -18,19 +18,32 @@ const Team = ({score, onIncrease, onDecrease, name }) => {
       })
     }>
       <div className={styles.scoreboard}>
-        <Button secondary onClick={onDecrease} team={name === TEAMS.KETCHUP ? 'ketchup' : 'mayo'}>-1</Button>
+        {!isReadOnly && <Button
+          secondary
+          onClick={onDecrease}
+          team={name === TEAMS.KETCHUP ? 'ketchup' : 'mayo'}>
+          -1</Button>}
         <Score value={score}/>
-        <Button onClick={onIncrease} team={name === TEAMS.KETCHUP ? 'ketchup' : 'mayo'}>+1</Button>
+        {!isReadOnly && <Button
+          onClick={onIncrease}
+          team={name === TEAMS.KETCHUP ? 'ketchup' : 'mayo'}
+        >+1</Button>}
       </div>
       <div className={styles.name}>{name}</div>
   </div>
 };
+
+Team.defaultProps = {
+  isReadOnly: false,
+}
+
 
 Team.propTypes = {
   score: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   onIncrease: PropTypes.func.isRequired,
   onDecrease: PropTypes.func.isRequired,
+  isReadOnly: PropTypes.bool,
 }
 
 

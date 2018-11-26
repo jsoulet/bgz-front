@@ -12,7 +12,7 @@ class AdminContainer extends Component {
   componentDidMount() {
     const gameId = this.props.match.params.gameId;
 
-    fetch(process.env.REACT_APP_API_GAMES + `${gameId}`, {mode: 'cors',})
+    fetch(process.env.REACT_APP_API_GAMES + `/${gameId}`, {mode: 'cors',})
     .then(response => {
       response
         .json()

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import Game from '../_components/Game';
 
-const Admin = ({ketchup, mayo}) =>{
+const Player = ({ketchup, mayo}) =>{
   return (
-    <Game ketchup={ketchup} mayo={mayo}/>
+    <Game ketchup={ketchup} mayo={mayo} isReadOnly/>
   );
 }
 
-Admin.propTypes = {
+Player.propTypes = {
   ketchup: PropTypes.number.isRequired,
   mayo: PropTypes.number.isRequired,
 }
 
-export default Admin;
+export default Player;

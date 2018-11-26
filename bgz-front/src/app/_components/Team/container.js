@@ -21,7 +21,7 @@ class TeamContainer extends Component {
       score: score,
     });
     fetch(
-      process.env.REACT_APP_API_GAMES + `${gameId}`,
+      process.env.REACT_APP_API_GAMES + `/${gameId}`,
       {
         mode: 'cors',
         method: 'PUT',
@@ -53,6 +53,7 @@ class TeamContainer extends Component {
       onDecrease={this.onDecreaseHandler}
       onIncrease={this.onIncreaseHandler}
       name={TEAMS[this.props.team]}
+      isReadOnly={this.props.isReadOnly}
     />;
   }
 }
@@ -60,6 +61,7 @@ class TeamContainer extends Component {
 TeamContainer.TEAMS = TEAMS;
 
 TeamContainer.propTypes = {
+  isReadOnly: PropTypes.bool,
   score: PropTypes.number.isRequired,
   team: PropTypes.oneOf(Object.values(TEAMS))
 }
