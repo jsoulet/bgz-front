@@ -9,11 +9,19 @@
     border-color: $ketchup;
     background: $ketchup;
     color: $white;
+    &:focus{
+      outline: $ketchup auto 5px;
+    }
+
   }
   &.mayo {
     border-color: $mayo;
     background: $mayo;
     color: $white;
+    &:focus{
+      outline: $mayo auto 5px;
+    }
+
   }
   &.secondary {
     background: transparent;

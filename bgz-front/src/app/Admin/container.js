@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Admin from './component';
+import Spinner from '../_components/Spinner';
 
 class AdminContainer extends Component {
   state = {
@@ -16,7 +17,6 @@ class AdminContainer extends Component {
       response
         .json()
         .then(data => {
-          console.log(data);
           this.setState({
             isLoading: false,
             game: data,
@@ -33,7 +33,7 @@ class AdminContainer extends Component {
   }
   render( ) {
     if(this.state.isLoading) {
-      return <div>isLoading</div>
+      return <Spinner/>
     }
     if(this.state.hasError) {
       return <div>hasError</div>

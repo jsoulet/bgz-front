@@ -1,4 +1,15 @@
 @import './styles/base.module';
+
+@font-face {
+  font-family: 'BGZ';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/font/Horsal__.ttf');
+}
+body {
+  font-family: 'BGZ';
+}
+
 html {
   font-size: $font-size;
 }
@@ -6,7 +17,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: $default;
+  background-color: black;
+  //font-family: $default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,6 +1,5 @@
 @import 'src/styles/base.module.scss';
 
 .score {
-  font-size: $xxl;
-  font-family: $burger;
+  font-size: calc(2 * #{$xxl});
 }
