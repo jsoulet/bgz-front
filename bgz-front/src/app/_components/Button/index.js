@@ -4,12 +4,12 @@ import cn from 'classnames';
 
 import styles from './styles.module.scss';
 
-const Button = ({children, ...props}) => {
+const Button = ({children, secondary, team, ...props}) => {
   return <button
     className={cn(styles.button, {
-      [styles.secondary]: props.secondary,
-      [styles.ketchup]: props.team === 'ketchup',
-      [styles.mayo]: props.team === 'mayo',
+      [styles.secondary]: secondary,
+      [styles.ketchup]: team === 'ketchup',
+      [styles.mayo]: team === 'mayo',
     })}
     {...props}
   >

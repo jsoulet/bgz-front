@@ -8,7 +8,7 @@ const App = () =>
   <Router>
     <div>
       <Route path='/' exact component={Player}/>
-      <Route path='/admin/' component={Admin}/>
+      <Route path='/admin/:gameId' component={Admin}/>
     </div>
   </Router>;
 
