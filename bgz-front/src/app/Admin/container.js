@@ -1,46 +1,28 @@
 import React, {Component} from 'react';
-import Admin from './component';
+import {withGame} from '../store/GameProvider';
+
+import GameProvider, {GameContext} from '../store/GameProvider';
 import Spinner from '../_components/Spinner';
+import Admin from './component';
 
 class AdminContainer extends Component {
-  state = {
-    game: null,
-    isLoading: true,
-    hasError: false,
-  }
-
-  componentDidMount() {
-    const gameId = this.props.match.params.gameId;
-
-    fetch(process.env.REACT_APP_API_GAMES + `/${gameId}`, {mode: 'cors',})
-    .then(response => {
-      response
-        .json()
-        .then(data => {
-          this.setState({
-            isLoading: false,
-            game: data,
-          })
-        })
-    })
-    .catch(() => {
-      this.setState({
-        isLoading: false,
-        hasError: true,
-      })
-    })
-
-  }
   render( ) {
-    if(this.state.isLoading) {
-      return <Spinner/>
-    }
-    if(this.state.hasError) {
-      return <div>hasError</div>
-    }
+    return (<GameProvider>
+      <GameContext.Consumer>
+      {({isLoading, hasError}) => {
+        if(isLoading) {
+          return <Spinner/>
+        }
 
-    return <Admin ketchup={this.state.game.ketchupMiams} mayo={this.state.game.mayoMiams}/>
+        if(hasError) {
+          return <div>hasError</div>
+        }
+
+        return <Admin/>
+      } }
+      </GameContext.Consumer>
+  </GameProvider>);
   }
 }
 
-export default AdminContainer;
+export default withGame(AdminContainer);

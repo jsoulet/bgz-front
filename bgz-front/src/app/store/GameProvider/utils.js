@@ -14,10 +14,10 @@ export const buildUpdateScoreBody = (score, team) => {
 
 export const getScoreFromResponse = (response, team) => {
   if(team === TEAMS.KETCHUP) {
-    return response.ketchupMiams
+    return {ketchup: response.ketchupMiams}
   }
   if(team === TEAMS.MAYO) {
-    return response.mayoMiams
+    return {mayo: response.mayoMiams}
   }
 
   return 0;
