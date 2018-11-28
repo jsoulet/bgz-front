@@ -21,12 +21,12 @@ const Team = ({score, onIncrease, onDecrease, name, isReadOnly }) => {
         {!isReadOnly && <Button
           secondary
           onClick={onDecrease}
-          team={name === TEAMS.KETCHUP ? 'ketchup' : 'mayo'}>
+          color={name === TEAMS.KETCHUP ? 'red' : 'yellow'}>
           -1</Button>}
         <Score value={score}/>
         {!isReadOnly && <Button
           onClick={onIncrease}
-          team={name === TEAMS.KETCHUP ? 'ketchup' : 'mayo'}
+          color={name === TEAMS.KETCHUP ? 'red' : 'yellow'}
         >+1</Button>}
       </div>
       <div className={styles.name}>{name}</div>

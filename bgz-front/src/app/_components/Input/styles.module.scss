@@ -1,0 +1,13 @@
+@import '../../../styles/base.module';
+
+.input {
+  background: none;
+  border: none;
+  border: 1px solid palette(black, 5);
+  border-radius: rem-calc(2px);
+  height: 2rem;
+  padding: $s;
+  font-size: 1rem;
+  transition : outline 200ms ease-out;
+  margin: 0 $s;
+}

@@ -3,12 +3,16 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Admin from './app/Admin';
 import Player from './app/Player';
+import Landing from './app/Landing';
+
+import './fonts/fonts.scss';
 
 const App = () =>
   <Router>
     <div>
+      <Route path='/' exact component={Landing}/>
       <Route path='/:gameId' exact component={Player}/>
-      <Route path='/admin/:gameId' component={Admin}/>
+      <Route path='/admin/:gameId' exact component={Admin}/>
     </div>
   </Router>;
 

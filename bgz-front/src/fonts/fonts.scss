@@ -1,0 +1,25 @@
+$font-path: '.' !default;
+
+@font-face {
+  font-family: 'Horseshoes';
+  src: url('./HorseshoesSimple/Horseshoes.eot');
+  src: url('./HorseshoesSimple/Horseshoes.eot?#iefix') format('embedded-opentype'),
+      url('./HorseshoesSimple/Horseshoes.woff2') format('woff2'),
+      url('./HorseshoesSimple/Horseshoes.woff') format('woff'),
+      url('./HorseshoesSimple/Horseshoes.ttf') format('truetype'),
+      url('./HorseshoesSimple/Horseshoes.svg#Horseshoes') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Horseshoes and Lemonade';
+  src: url('./HorseshoesAndLemonade/HorseshoesAndLemonade.eot');
+  src: url('./HorseshoesAndLemonade/HorseshoesAndLemonade.eot?#iefix') format('embedded-opentype'),
+      url('./HorseshoesAndLemonade/HorseshoesAndLemonade.woff2') format('woff2'),
+      url('./HorseshoesAndLemonade/HorseshoesAndLemonade.woff') format('woff'),
+      url('./HorseshoesAndLemonade/HorseshoesAndLemonade.ttf') format('truetype'),
+      url('./HorseshoesAndLemonade/HorseshoesAndLemonade.svg#HorseshoesAndLemonade') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

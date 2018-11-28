@@ -1,0 +1,24 @@
+@import '../../../styles/base.module';
+.burgerQuiz {
+  font-family: $burger;
+  line-height: 0.8;
+  text-align: center;
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.burger {
+  color: palette(blue);
+  font-size: $xxl;
+}
+.quiz {
+  font-size: calc(2 * #{$xxl});
+}
+.ketchup{
+  color: palette(red);
+}
+.mayo{
+  color: palette(yellow);
+}

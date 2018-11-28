@@ -1,13 +1,7 @@
 @import './styles/base.module';
 
-@font-face {
-  font-family: 'BGZ';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./assets/font/Horsal__.ttf');
-}
 body {
-  font-family: 'BGZ';
+  font-family: $burger;
 }
 
 html {
