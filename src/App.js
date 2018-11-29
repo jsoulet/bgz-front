@@ -11,7 +11,7 @@ const App = () =>
   <Router>
     <div>
       <Route path='/' exact component={Landing}/>
-      <Route path='/:gameId' exact component={Player}/>
+      <Route path='/player/:gameId' exact component={Player}/>
       <Route path='/admin/:gameId' exact component={Admin}/>
     </div>
   </Router>;
