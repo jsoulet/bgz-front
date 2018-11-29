@@ -2,9 +2,10 @@
 
 .landing {
   font-family: $default;
+
   background: $white;
   background-image: url(./landing-bg.jpg);
-  background-size: 100%;
+  background-size: cover;
   color: $black;
   height: 100vh;
   width: 100vw;

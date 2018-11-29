@@ -10,6 +10,37 @@ class LandingContainer extends Component {
     gameId: null,
   }
 
+  onConnectHandler = (code) => {
+    this.setState({
+      isLoading: true,
+      hasError: false,
+    });
+    fetch(
+      `${process.env.REACT_APP_API_GAMES}/?code=${code}`,
+      {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      }
+    ).then((response) => {
+      response.json().then(
+        (data) => {
+          this.setState({
+            isLoading: false,
+            gameId: data.uuid,
+          })
+      });
+    })
+    .catch((error) => {
+      this.setState({
+        isLoading: false,
+        hasError: true,
+      })
+    })
+  }
   onNewGameHandler = () => {
     fetch(
       process.env.REACT_APP_API_GAMES,
@@ -45,6 +76,7 @@ class LandingContainer extends Component {
     }
     return <Landing
       onNewGame={this.onNewGameHandler}
+      onConnect={this.onConnectHandler}
       hasError={hasError}
       isLoading={isLoading}
     />;
