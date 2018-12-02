@@ -2,10 +2,10 @@ import React from 'react';
 
 import Game from '../_components/Game';
 
-const Admin = () =>{
+const Admin = () => {
   return (
-    <Game/>
+    <Game />
   );
-}
+};
 
 export default Admin;

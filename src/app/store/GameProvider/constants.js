@@ -1,4 +1,4 @@
 export const TEAMS = {
   KETCHUP: 'KETCHUP',
-  MAYO: 'MAYO'
-}
+  MAYO: 'MAYO',
+};

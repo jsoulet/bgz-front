@@ -10,7 +10,7 @@ export default ${name};
 `;
 
 const files = fs.readdirSync(dirPath);
-files.forEach((filePath) => {
+files.forEach(filePath => {
   if (filePath === '.DS_Store') {
     return;
   }
