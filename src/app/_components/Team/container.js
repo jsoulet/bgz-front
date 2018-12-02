@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
 import Team from './component';
-import {withGame} from '../../store/GameProvider';
+import { withGame } from '../../store/GameProvider';
 
-import {TEAMS as TEAMS_CONST} from './constants';
+import { TEAMS as TEAMS_CONST } from './constants';
 
 class TeamContainer extends Component {
   onIncreaseHandler = () => {
-    return this.props.changeScore(this.props.score + 1, this.props.team);
+    const { score, team, changeScore } = this.props;
+    return changeScore(score + 1, team);
   }
 
   onDecreaseHandler = () => {
@@ -29,10 +30,15 @@ class TeamContainer extends Component {
 
 export const TEAMS = TEAMS_CONST;
 
+TeamContainer.defaultProps = {
+  isReadOnly: false,
+};
+
 TeamContainer.propTypes = {
   isReadOnly: PropTypes.bool,
   score: PropTypes.number.isRequired,
-  team: PropTypes.oneOf(Object.values(TEAMS))
-}
+  team: PropTypes.oneOf(Object.values(TEAMS)).isRequired,
+  changeScore: PropTypes.func.isRequired,
+};
 
 export default withRouter(withGame(TeamContainer));
