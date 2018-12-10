@@ -1,10 +1,15 @@
 import React from 'react';
 
 import Game from '../_components/Game';
+import JingleConsole from './JingleConsole';
 
 const Admin = () => {
   return (
-    <Game />
+    <div>
+      <Game />
+      <JingleConsole />
+    </div>
+
   );
 };
 

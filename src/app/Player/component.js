@@ -1,33 +1,54 @@
-import React, {Component} from 'react';
-import io from 'socket.io-client';
-import {withRouter} from 'react-router-dom';
-import {withGame} from '../store/GameProvider';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { withGame } from '../store/GameProvider';
+import { withSocket } from '../store/SocketProvider';
 
 import Game from '../_components/Game';
+import JinglePlayer from './JinglePlayer';
 
 class Player extends Component {
-  connectToWebSocket = (gameId) => {
-    const socket = io(process.env.REACT_APP_SOCKET);
-    socket.on('askGameId', (data) => {
-      socket.emit('askGameId-Response', { gameId: gameId });
-    });
-    socket.on('message', (message) => {
-      console.log(message);
-    });
-    socket.on('score', (score) => {
-      console.log(score);
-      this.props.updateScore(score);
-    });
+  componentDidMount() {
+    const {
+      createListenner,
+      updateScore,
+    } = this.props;
+
+    createListenner('askGameId', this.onAskIdHandler);
+    createListenner('score', updateScore);
   }
 
-  componentDidMount() {
-    const gameId = this.props.match.params.gameId;
-    this.connectToWebSocket(gameId);
+  componentWillUnmount() {
+    this.props.removeListenner('askGameId', this.onAskIdHandler);
+    this.props.removeListenner('score', this.props.updateScore);
+  }
+
+  onAskIdHandler = () => {
+    console.log('gameID sent');
+    this.props.sendMessage('askGameId-Response', {
+      gameId: this.props.match.params.gameId,
+    });
   }
 
   render() {
-    return <Game isReadOnly/>;
+    return (
+      <div>
+        <Game isReadOnly />
+        <JinglePlayer />
+      </div>);
   }
 }
 
-export default withRouter(withGame(Player));
+Player.propTypes = {
+  updateScore: PropTypes.func.isRequired,
+  createListenner: PropTypes.func.isRequired,
+  removeListenner: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      gameId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default withRouter(withGame(withSocket(Player)));

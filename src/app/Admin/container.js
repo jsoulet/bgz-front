@@ -1,28 +1,29 @@
-import React, {Component} from 'react';
-import {withGame} from '../store/GameProvider';
+import React from 'react';
 
-import GameProvider, {GameContext} from '../store/GameProvider';
+import SocketProvider from '../store/SocketProvider';
+import GameProvider, { GameContext, withGame } from '../store/GameProvider';
 import Spinner from '../_components/Spinner';
 import Admin from './component';
 
-class AdminContainer extends Component {
-  render( ) {
-    return (<GameProvider>
+const AdminContainer = () => (
+  <GameProvider>
+    <SocketProvider>
       <GameContext.Consumer>
-      {({isLoading, hasError}) => {
-        if(isLoading) {
-          return <Spinner/>
-        }
+        {({ isLoading, hasError }) => {
+          if (isLoading) {
+            return <Spinner />;
+          }
 
-        if(hasError) {
-          return <div>hasError</div>
-        }
+          if (hasError) {
+            return <div>hasError</div>;
+          }
 
-        return <Admin/>
-      } }
+          return <Admin />;
+        } }
       </GameContext.Consumer>
+
+
+    </SocketProvider>
   </GameProvider>);
-  }
-}
 
 export default withGame(AdminContainer);
