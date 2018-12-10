@@ -53,13 +53,13 @@ class JinglePlayerContainer extends Component {
       case 'Menus': {
         return {
           url: Menus,
-          length: 5,
+          length: 6,
         };
       }
       case 'Nuggets': {
         return {
           url: Nuggets,
-          length: 8,
+          length: 9,
         };
       }
       case 'BurgerDeLaMort': {

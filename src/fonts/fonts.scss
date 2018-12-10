@@ -23,3 +23,31 @@ $font-path: '.' !default;
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('./Aileron/Aileron-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('./Aileron/Aileron-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('./Aileron/Aileron-BoldItalic.otf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('./Aileron/Aileron-Italic.otf');
+  font-weight: normal;
+  font-style: italic;
+}

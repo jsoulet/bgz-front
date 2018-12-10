@@ -1,19 +1,18 @@
 @import "~video-react/styles/scss/video-react";
 @import './styles/base.module';
 
-body {
-  font-family: $burger;
-}
-
 html {
   font-size: $font-size;
+  font-family: $default;
+}
+
+button {
+  font-family: $default;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
-  //font-family: $default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

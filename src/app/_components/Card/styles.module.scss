@@ -1,0 +1,28 @@
+@import '../../../styles/base.module';
+
+.card {
+  @include shadow-m;
+  position: relative;
+  margin: $s;
+  background: palette(black);
+  padding: 0;
+  border: $xs solid palette(white);
+  &:hover {
+    cursor: pointer;
+  }
+  &:active, &:focus {
+    outline: none;
+  }
+  &:active{
+    @include shadow-s;
+  }
+}
+
+.textWrapper {
+  background: palette(white);
+  font-size: $m;
+  padding: $s;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
