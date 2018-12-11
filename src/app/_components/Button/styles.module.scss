@@ -1,28 +1,66 @@
 @import '../../../styles/base.module';
 
 @mixin primaryButton($color) {
-  background: palette($color);
+  background-color: palette($color);
   border-color:palette($color);
   color: palette(white);
+  &:hover {
+    background-color: palette($color, -2);
+    border-color:palette($color, -2);
+  }
 }
 @mixin secondaryButton($color) {
   color: palette($color);
   border-color:palette($color);
-  background: transparent;
+  background-color: transparent;
+  &:hover {
+    color: palette(white);
+    background-color: palette($color);
+    border-color:palette($color);
+  }
 }
 @mixin linkButton($color) {
   border: none;
-  text-decoration: underline;
-  background: transparent;
+  background-color: transparent;
   color: palette($color);
   padding: 0;
 }
+
+@mixin disabledButton($color) {
+  border-color: palette($color, 5);
+  background-color: palette($color, 5);
+  color: palette($color, 1);
+  cursor: not-allowed;
+}
+
+@mixin button($color) {
+  .#{$color} {
+    @include primaryButton($color);
+    &:focus {
+      outline: palette($color) auto 5px;
+    }
+    &.secondary {
+      @include secondaryButton($color);
+    }
+    &.link {
+      @include linkButton($color);
+    }
+    &.disabled {
+      @include disabledButton($color);
+    }
+  }
+}
+
+
 .button {
   @include primaryButton(black);
   font-size: 1rem;
-  border-width: rem-calc(1px);
-  border-radius: $xs;
+  border-width: rem-calc(2px);
   padding: $s;
+  transition: all 0.3s linear;
+  &:hover {
+    cursor: pointer;
+  }
   &.secondary {
     @include secondaryButton(black);
   }
@@ -40,18 +78,5 @@
 
 $buttonColors: blue, red, yellow, green, orange, black;
 @each $color in $buttonColors {
-  .#{$color} {
-    @include primaryButton($color);
-    &:focus {
-      outline: palette($color) auto 5px;
-    }
-
-    &.secondary {
-      @include secondaryButton($color);
-    }
-
-    &.link {
-      @include linkButton($color);
-    }
-  }
+  @include button($color);
 }

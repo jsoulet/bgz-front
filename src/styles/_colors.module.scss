@@ -36,6 +36,6 @@ $mayo: color(yellow);
   $color: color($color-name);
   @return if(
     $level < 0,
-    darken($color, $level * $color-interval),
+    darken($color, $level * $color-interval * -1),
     lighten($color, $level * $color-interval));
 }
