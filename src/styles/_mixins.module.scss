@@ -2,3 +2,25 @@
   $remSize: $size / 16px;
   @return #{$remSize}rem;
 }
+
+@mixin forDevice($range) {
+  $phone-portrait-boundary: 480px;
+  $phone-landscape-boundary: 786px;
+  $tablet-portrait-boundary: 900px;
+  $tablet-landscape-boundary: 1200px;
+  $desktop-boundary: 1800px;
+
+  @if $range == phone-portrait-only {
+    @media screen and (max-width: #{$phone-portrait-boundary - 1}) { @content; }
+  } @else if $range == phone-landscape-and-up {
+    @media screen and (min-width: $phone-portrait-boundary) { @content; }
+  } @else if $range == tablet-portrait-and-up {
+    @media screen and (min-width: $phone-landscape-boundary) { @content; }
+  } @else if $range == tablet-landscape-and-up {
+    @media screen and (min-width: $tablet-portrait-boundary) { @content; }
+  } @else if $range == desktop-and-up {
+    @media screen and (min-width: $tablet-landscape-boundary) { @content; }
+  } @else if $range == big-desktop-and-up {
+    @media screen and (min-width: $desktop-boundary + 1) { @content; }
+  }
+}

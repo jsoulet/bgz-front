@@ -1,10 +1,8 @@
 @import '../../../styles/base.module';
 
 .backdrop {
-
   position: fixed;
   z-index: 1;
-  padding-top: 20vh;
   left: 0;
   top: 0;
   width: 100%;
@@ -14,9 +12,15 @@
 
 .modal {
   background: palette(white);
-  border-radius: calc(#{$s} / 2);
+  border-radius: $xs;
   padding: $l;
-  @include shadow-s;
+  @include shadow-xl;
   margin: auto;
-  width: 60vw;
+  width: 90vw;
+  margin-top: 5vw;
+  @include forDevice(tablet-landscape-and-up) {
+    width: 40vw;
+    margin-top: 10vw;
+    margin-left: 5vw;
+  }
 }
