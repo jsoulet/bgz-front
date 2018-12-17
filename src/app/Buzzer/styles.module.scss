@@ -1,0 +1,23 @@
+@import '../../styles/base.module';
+
+.buzzer {
+  width: 100vw;
+  height: 100vh;
+  background-color: palette(black);
+  text-align: center;
+}
+
+.ketchup {
+  color: palette(red)
+}
+
+.mayo {
+  color: palette(yellow)
+}
+
+.halfScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}

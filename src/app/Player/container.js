@@ -1,30 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+import isNull from 'lodash/isNull';
 import GameProvider, { GameConsumer } from '../store/GameProvider';
 import SocketProvider from '../store/SocketProvider';
 
 import Player from './component';
 import Spinner from '../_components/Spinner';
 
-const PlayerContainer = () => {
-  return (
-    <GameProvider>
-      <SocketProvider>
-        <GameConsumer>
-          {({ isLoading, hasError }) => {
-            if (isLoading) {
-              return <Spinner />;
-            }
+class PlayerContainer extends Component {
+  state = {
+    teamBuzzer: null,
+  }
 
-            if (hasError) {
-              return <div>hasError</div>;
-            }
+  handleOnRecieveBuzz = ({ team }) => {
+    if (isNull(team) || isNull(this.state.teamBuzzer)) {
+      this.setState({ teamBuzzer: team });
+    }
+  }
 
-            return <Player />;
-          }}
-        </GameConsumer>
-      </SocketProvider>
-    </GameProvider>);
-};
+  render() {
+    return (
+      <GameProvider>
+        <SocketProvider>
+          <GameConsumer>
+            {({ isLoading, hasError }) => {
+              if (isLoading) {
+                return <Spinner />;
+              }
+
+              if (hasError) {
+                return <div>hasError</div>;
+              }
+
+              return <Player
+                onRecieveBuzz={this.handleOnRecieveBuzz}
+                teamBuzzer={this.state.teamBuzzer}
+              />;
+            }}
+          </GameConsumer>
+        </SocketProvider>
+      </GameProvider>);
+  }
+}
 
 export default PlayerContainer;

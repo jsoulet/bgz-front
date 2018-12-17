@@ -1,4 +1,5 @@
 import React, { createContext, Component } from 'react';
+import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 import { withRouter } from 'react-router';
 
@@ -20,11 +21,27 @@ class SocketProvider extends Component {
     },
   }
 
+  componentDidMount() {
+    const { match: { params: { gameId } } } = this.props;
+    this.state.createListenner('askGameId', () => {
+      console.log('send Game ID');
+      this.state.sendMessage('askGameId-Response', { gameId });
+    });
+  }
+
   render() {
     const { state, props: { children } } = this;
     return <SocketContext.Provider value={state}>{children}</SocketContext.Provider>;
   }
 }
+
+SocketProvider.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      gameId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export const withSocket = WrappedComponent => props => (
   <SocketContext.Consumer>

@@ -1,0 +1,13 @@
+@import '../../styles/base.module';
+
+.player{
+  border: $m solid palette(black);
+}
+
+.ketchup {
+  border-color: palette(red);
+}
+
+.mayo {
+  border-color: palette(yellow);
+}
