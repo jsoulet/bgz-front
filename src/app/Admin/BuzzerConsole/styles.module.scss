@@ -1,0 +1,22 @@
+@import '../../../styles/base.module';
+@import '~/react-toggle/style.css';
+
+.buzzerConsole {
+  padding: $m;
+}
+
+.buzzerConsoleContent {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-family: $burger;
+  color: palette(blue);
+  font-size: $xl;
+  padding-bottom: $m;
+}
+
+.led {
+  margin: 0 $s;
+}

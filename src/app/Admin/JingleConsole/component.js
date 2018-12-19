@@ -17,7 +17,6 @@ const JingleConsole = ({
   return (
     <div className={styles.jingleConsole}>
       <div className={styles.title}>
-
         Lancer les jingles
       </div>
       <div className={styles.jingleButtons}>
