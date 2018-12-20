@@ -11,6 +11,26 @@ class GameProvider extends Component {
     isLoading: false,
     ketchup: 0,
     mayo: 0,
+    game: {
+      ketchupMiams: 0,
+      mayoMiams: 0,
+      isBuzzerActive: false,
+      buzzerTeam: null,
+    },
+    getGame: ({ withLoader = false }) => {
+      this.pullGame(this.state.gameId, { withLoader });
+    },
+    updateGame: (game, options = { withLoader: false }) => {
+      const oldGame = { ...this.state.game };
+      this.setState(({ game: stateGame }) => ({
+        game: {
+          ...stateGame,
+          ...game,
+        },
+      }), () => {
+        this.pushGame(this.state.game, oldGame, options);
+      });
+    },
     changeScore: (score, team) => this.changeScore(score, this.state.score, team),
     updateScore: data => {
       const score = {};
@@ -25,8 +45,10 @@ class GameProvider extends Component {
   }
 
   componentDidMount() {
-    const gameId = this.props.match.params.gameId;
-    this.fetchGame(gameId);
+    this.setState(() => ({
+      gameId: this.props.match.params.gameId,
+    }),
+    () => this.state.getGame({ withLoader: true }));
   }
 
   changeScore = (score, oldScore, team) => {
@@ -55,10 +77,13 @@ class GameProvider extends Component {
       });
   }
 
-  fetchGame = gameId => {
-    this.setState({
-      isLoading: true,
-    });
+  pullGame = (gameId, { withLoader }) => {
+    if (withLoader) {
+      this.setState({
+        isLoading: true,
+      });
+    }
+
     fetch(`${process.env.REACT_APP_API_GAMES}/${gameId}`, { mode: 'cors' })
       .then(response => {
         response
@@ -66,6 +91,8 @@ class GameProvider extends Component {
           .then(data => {
             this.setState({
               isLoading: false,
+              game: data,
+              // @todo: migrate usage of state.ketchup|mayo to state.game.ketchup|mayo
               ketchup: data.ketchupMiams,
               mayo: data.mayoMiams,
             });
@@ -73,6 +100,41 @@ class GameProvider extends Component {
       })
       .catch(() => {
         this.setState({
+          isLoading: false,
+          hasError: true,
+        });
+      });
+  }
+
+  pushGame = (newGame, oldGame, { withLoader }) => {
+    if (withLoader) {
+      this.setState({
+        isLoading: true,
+      });
+    }
+    fetch(
+      `${process.env.REACT_APP_API_GAMES}/${this.state.gameId}`,
+      {
+        mode: 'cors',
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newGame),
+      },
+    )
+      .then(response => {
+        response.json().then(game => {
+          this.setState({
+            game,
+            isLoading: false,
+          });
+        });
+      })
+      .catch(() => {
+        this.setState({
+          game: oldGame,
           isLoading: false,
           hasError: true,
         });

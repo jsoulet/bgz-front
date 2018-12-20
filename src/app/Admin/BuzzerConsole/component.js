@@ -15,7 +15,7 @@ const BuzzerConsole = ({
     <div className={styles.buzzerConsole}>
       <div className={styles.title}>Buzzer</div>
       <div className={styles.buzzerConsoleContent}>
-        <Toggle defaultChecked={isActive} onChange={onIsActiveToggle} />
+        <Toggle checked={isActive} onChange={onIsActiveToggle} />
         <Led team={team} className={styles.led} />
         <Button onClick={onResetBuzzer}>Réinitialiser</Button>
       </div>

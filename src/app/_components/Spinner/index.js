@@ -1,11 +1,17 @@
-import React from "react"
-import styles from "./styles.module.scss"
+import React from 'react';
+import './styles.scss';
 
 const Spinner = () => {
-  return (<div className={styles.spinner}>
-  <div className={styles.dot1}></div>
-  <div className={styles.dot2}></div>
-</div>)
-}
+  return (
+    <div className="container">
+      <div id="icon" className="burger">
+        <span className="hamburger bun top" />
+        <span className="hamburger chez" />
+        <span className="hamburger meet" />
+        <span className="hamburger lettus" />
+        <span className="hamburger bun bottom" />
+      </div>
+    </div>);
+};
 
 export default Spinner;

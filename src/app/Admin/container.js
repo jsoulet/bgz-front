@@ -21,8 +21,6 @@ const AdminContainer = () => (
           return <Admin />;
         } }
       </GameContext.Consumer>
-
-
     </SocketProvider>
   </GameProvider>);
 

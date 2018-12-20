@@ -10,11 +10,16 @@ import { TEAMS as TEAMS_CONST } from './constants';
 class TeamContainer extends Component {
   onIncreaseHandler = () => {
     const { score, team, changeScore } = this.props;
-    return changeScore(score + 1, team);
+    if (score < 25) {
+      changeScore(score + 1, team);
+    }
   }
 
   onDecreaseHandler = () => {
-    return this.props.changeScore(this.props.score - 1, this.props.team);
+    const { score, team, changeScore } = this.props;
+    if (score > 0) {
+      changeScore(score - 1, team);
+    }
   }
 
   render() {
