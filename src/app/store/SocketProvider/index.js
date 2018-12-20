@@ -10,7 +10,10 @@ class SocketProvider extends Component {
     socket: io(process.env.REACT_APP_SOCKET),
     sendMessage: (name, data) => {
       if (this.state.socket.connected) {
-        this.state.socket.emit(name, data);
+        this.state.socket.emit(name, {
+          gameId: this.props.match.params.gameId,
+          ...data,
+        });
       }
     },
     createListenner: (name, func) => {

@@ -38,6 +38,9 @@ class BuzzerConsoleContainer extends Component {
   }
 
   onResetBuzzerHandler = () => {
+    this.props.sendMessage('buzz', {
+      team: null,
+    });
     this.setState({
       team: null,
     });
@@ -68,8 +71,10 @@ class BuzzerConsoleContainer extends Component {
 BuzzerConsoleContainer.propTypes = {
   createListenner: PropTypes.func.isRequired,
   removeListenner: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
   updateGame: PropTypes.func.isRequired,
   game: PropTypes.shape({
+    gameId: PropTypes.string,
     buzzerValue: PropTypes.string,
     isBuzzerEnabled: PropTypes.bool,
   }).isRequired,

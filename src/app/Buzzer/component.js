@@ -13,7 +13,7 @@ const Buzzer = ({ team, score }) => {
         <Score value={score} />
       </div>
       <div className={styles.halfScreen}>
-        <BuzzerButton team={team} onClick={() => console.log('pouet')} />
+        <BuzzerButton team={team} />
       </div>
     </div>);
 };

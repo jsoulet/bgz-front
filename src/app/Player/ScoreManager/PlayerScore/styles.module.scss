@@ -1,0 +1,21 @@
+@import "../../../../styles/base.module";
+
+.playerScore {
+  font-family: $burger;
+  text-align: center;
+  height: 100%;
+  width: 50%;
+
+}
+.teamName {
+  text-align: center;
+  font-size: $xxl;
+  margin-top: $m;
+}
+.ketchup {
+  color: palette(red);
+}
+
+.mayo {
+  color: palette(yellow);
+}

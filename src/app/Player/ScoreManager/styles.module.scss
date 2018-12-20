@@ -1,0 +1,10 @@
+
+@import '../../../styles/base.module';
+.scoreManager {
+  background: palette(black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - #{$m} * 2);
+  width: calc(100vw - #{$m} * 2);
+}
