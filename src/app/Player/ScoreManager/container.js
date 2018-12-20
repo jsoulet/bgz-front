@@ -17,15 +17,18 @@ class ScoreManagerContainer extends Component {
       mayoMiams,
     });
 
-    this.props.createListenner('score', this.onUpdateScoreHandler);
+    this.props.createListenner('updateGame', this.onUpdateScoreHandler);
   }
 
   componentWillUnmount() {
-    this.props.removeListenner('score', this.onUpdateScoreHandler);
+    this.props.removeListenner('updateGame', this.onUpdateScoreHandler);
   }
 
-  onUpdateScoreHandler = score => {
-    this.setState({ ...score });
+  onUpdateScoreHandler = ({ ketchupMiams, mayoMiams }) => {
+    this.setState(state => ({
+      ketchupMiams: ketchupMiams || state.ketchupMiams,
+      mayoMiams: mayoMiams || state.mayoMiams,
+    }));
   }
 
   render() {

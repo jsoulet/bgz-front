@@ -10,6 +10,7 @@ import Spinner from '../_components/Spinner';
 class PlayerContainer extends Component {
   state = {
     teamBuzzer: null,
+    isBuzzerEnabled: true,
   }
 
   handleOnRecieveBuzz = ({ team }) => {
@@ -18,6 +19,7 @@ class PlayerContainer extends Component {
       this.setState({ teamBuzzer: team });
     }
   }
+
 
   render() {
     return (

@@ -1,14 +1,7 @@
 @import '../../styles/base.module';
 
 .player{
-  border: $m solid palette(black);
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
-}
-
-.ketchup {
-  border-color: palette(red);
-}
-
-.mayo {
-  border-color: palette(yellow);
 }

@@ -28,7 +28,7 @@ class GameProvider extends Component {
           ...game,
         },
       }), () => {
-        this.pushGame(this.state.game, oldGame, options);
+        this.pushGame(game, oldGame, options);
       });
     },
     changeScore: (score, team) => this.changeScore(score, this.state.score, team),

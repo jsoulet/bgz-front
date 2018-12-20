@@ -6,6 +6,7 @@ import { withSocket } from '../store/SocketProvider';
 
 import JinglePlayer from './JinglePlayer';
 import ScoreManager from './ScoreManager';
+import BuzzerReciever from './BuzzerReciever';
 
 import styles from './styles.module.scss';
 
@@ -25,10 +26,10 @@ class Player extends Component {
   render() {
     const { teamBuzzer } = this.props;
     return (
-      <div className={cn(styles.player, teamBuzzer ? styles[teamBuzzer] : '')}>
+      <BuzzerReciever className={styles.player}>
         <ScoreManager />
         <JinglePlayer />
-      </div>);
+      </BuzzerReciever>);
   }
 }
 Player.defaultProps = {

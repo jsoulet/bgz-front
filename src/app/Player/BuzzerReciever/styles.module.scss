@@ -1,0 +1,15 @@
+@import '../../../styles/base.module';
+
+.buzzerReciever {
+  height: 100%;
+  width: 100%;
+  border: $m solid palette(black);
+}
+
+.ketchup {
+  border-color: palette(red);
+}
+
+.mayo {
+  border-color: palette(yellow);
+}
