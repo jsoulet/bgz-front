@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import Score from '../_components/Score';
+import TeamScore from './TeamScore';
 import BuzzerButton from './BuzzerButton';
 
 import styles from './styles.module.scss';
 
-const Buzzer = ({ team, score }) => {
+const Buzzer = ({ team }) => {
   return (
     <div className={cn(styles.buzzer, styles[team])}>
       <div className={styles.halfScreen}>
-        <Score value={score} />
+        <TeamScore team={team} />
       </div>
       <div className={styles.halfScreen}>
         <BuzzerButton team={team} />
@@ -20,7 +20,6 @@ const Buzzer = ({ team, score }) => {
 
 Buzzer.propTypes = {
   team: PropTypes.oneOf(['ketchup', 'mayo']).isRequired,
-  score: PropTypes.number.isRequired,
 };
 
 export default Buzzer;

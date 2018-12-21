@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import ScoreManager from './component';
 import { withGame } from '../../store/GameProvider';
 import { withSocket } from '../../store/SocketProvider';
@@ -24,10 +25,10 @@ class ScoreManagerContainer extends Component {
     this.props.removeListenner('updateGame', this.onUpdateScoreHandler);
   }
 
-  onUpdateScoreHandler = ({ ketchupMiams, mayoMiams }) => {
+  onUpdateScoreHandler = payload => {
     this.setState(state => ({
-      ketchupMiams: ketchupMiams || state.ketchupMiams,
-      mayoMiams: mayoMiams || state.mayoMiams,
+      ketchupMiams: get(payload, 'ketchupMiams', state.ketchupMiams),
+      mayoMiams: get(payload, 'mayoMiams', state.mayoMiams),
     }));
   }
 

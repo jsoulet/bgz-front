@@ -15,7 +15,6 @@ class PlayerContainer extends Component {
 
   handleOnRecieveBuzz = ({ team }) => {
     if (isNull(team) || isNull(this.state.teamBuzzer)) {
-      console.log({ team });
       this.setState({ teamBuzzer: team });
     }
   }

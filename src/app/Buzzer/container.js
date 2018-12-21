@@ -13,7 +13,7 @@ const BuzzerContainer = withRouter(({ match: { params: { team } } }) => {
       <SocketProvider>
         <GameConsumer>
           {({
-            isLoading, hasError, ketchup, mayo,
+            isLoading, hasError,
           }) => {
             if (isLoading) {
               return <Spinner />;
@@ -23,7 +23,7 @@ const BuzzerContainer = withRouter(({ match: { params: { team } } }) => {
               return <div>hasError</div>;
             }
 
-            return <Buzzer team={team} score={team === 'ketchup' ? ketchup : mayo} />;
+            return <Buzzer team={team} />;
           }}
         </GameConsumer>
       </SocketProvider>

@@ -8,15 +8,15 @@ import { withGame } from '../../store/GameProvider';
 import { TEAMS as TEAMS_CONST } from './constants';
 
 class TeamContainer extends Component {
-  onIncreaseHandler = () => {
-    const { score, team, changeScore } = this.props;
+  onIncreaseHandler = score => {
+    const { team, changeScore } = this.props;
     if (score < 25) {
       changeScore(score + 1, team);
     }
   }
 
-  onDecreaseHandler = () => {
-    const { score, team, changeScore } = this.props;
+  onDecreaseHandler = score => {
+    const { team, changeScore } = this.props;
     if (score > 0) {
       changeScore(score - 1, team);
     }

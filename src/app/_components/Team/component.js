@@ -26,7 +26,7 @@ const Team = ({
       {!isReadOnly && (
       <Button
         secondary
-        onClick={onDecrease}
+        onClick={() => onDecrease(score)}
         color={name === TEAMS.KETCHUP ? 'red' : 'yellow'}
       >
         -1
@@ -35,7 +35,7 @@ const Team = ({
       <Score value={score} />
       {!isReadOnly && (
       <Button
-        onClick={onIncrease}
+        onClick={() => onIncrease(score)}
         color={name === TEAMS.KETCHUP ? 'red' : 'yellow'}
       >
         +1
