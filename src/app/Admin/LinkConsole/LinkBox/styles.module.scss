@@ -1,0 +1,32 @@
+@import '../../../../styles/base.module';
+
+.linkBox {
+  padding: $s;
+  color: palette(green);
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-family: $burger;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  color: palette(black, 5);
+  padding: 0 $xs 0px;
+  // width: 20rem;
+  height: 1.5rem;
+  font-size: 0.8rem;
+}
+
+.hint {
+  color: palette(black, 4);
+  background: palette(black, 9);
+  display: inline-block;
+  padding: $xs $s;
+  border-radius: $m;
+  font-size: 0.8rem;
+}

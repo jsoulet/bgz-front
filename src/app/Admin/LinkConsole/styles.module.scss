@@ -1,0 +1,22 @@
+@import '../../../styles/base.module';
+
+.linkConsole {
+  padding: $m
+}
+
+.title {
+  font-family: $burger;
+  color: palette(blue);
+  font-size: $xl;
+  padding-bottom: $m;
+}
+
+.ketchup {
+  color: palette(red);
+}
+.mayo {
+  color: palette(yellow);
+}
+.code {
+  color: palette(blue, 2);
+}

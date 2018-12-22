@@ -1,0 +1,7 @@
+.splitScreen {
+  display: flex;
+  align-items: stretch;
+  > div {
+    width: 50%;
+  }
+}
