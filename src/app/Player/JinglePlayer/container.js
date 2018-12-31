@@ -24,8 +24,9 @@ class JinglePlayerContainer extends Component {
 
   onJingleSentHandler = ({ jingleType }) => {
     const jingleData = this.getJingleDataFromType(jingleType);
-    this.setState({ jingleUrl: jingleData.url });
-    this.removeJingle(jingleData.length);
+    this.setState({ jingleUrl: jingleData.url }, () => {
+      this.removeJingle(jingleData.length);
+    });
   }
 
   removeJingle = timer => {
@@ -75,11 +76,7 @@ class JinglePlayerContainer extends Component {
   }
 
   render() {
-    const { jingleUrl } = this.state;
-    if (jingleUrl) {
-      return <JinglePlayer jingleUrl={this.state.jingleUrl} />;
-    }
-    return null;
+    return <JinglePlayer jingleUrl={this.state.jingleUrl} />;
   }
 }
 
