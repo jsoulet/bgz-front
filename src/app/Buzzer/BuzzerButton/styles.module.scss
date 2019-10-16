@@ -20,6 +20,19 @@
   }
 }
 
+.buzzerTeam{
+  color: palette(white);
+  text-align: center;
+  font-family: $burger;
+  font-size: $xxl;
+}
+
+.inactive {
+  background: palette(gray);/*ButtonColor*/
+  border-color: palette(gray, 2);
+  border-bottom-color: palette(gray, -2)
+}
+
 .ketchup {
   background: palette(red);/*ButtonColor*/
   border-color: palette(red, 2);

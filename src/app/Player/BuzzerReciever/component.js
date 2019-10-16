@@ -15,6 +15,7 @@ const BuzzerReciever = ({ team, children, className }) => {
       className,
     )}
     >
+      {team && <div className={styles.overlay}>{`${team} a la main`}</div>}
       {children}
     </div>);
 };
@@ -22,10 +23,11 @@ const BuzzerReciever = ({ team, children, className }) => {
 BuzzerReciever.defaultProps = {
   children: null,
   className: '',
+  team: null,
 };
 
 BuzzerReciever.propTypes = {
-  team: PropTypes.string.isRequired,
+  team: PropTypes.string,
   children: PropTypes.oneOf(PropTypes.element, PropTypes.arrayOf(PropTypes.element)),
   className: PropTypes.string,
 };

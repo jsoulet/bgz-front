@@ -16,25 +16,35 @@ class BuzzerConsoleContainer extends Component {
       isActive: isBuzzerEnabled,
     });
 
-    createListenner('buzz', ({ team }) => {
-      this.setState(state => {
-        if (state.team === null && state.isActive) {
-          return {
-            team,
-          };
-        }
-      });
-    });
+    createListenner('buzz', this.onBuzzHandler);
   }
 
   componentWillUnmount() {
-    this.props.removeListenner('buzz');
+    this.props.removeListenner('buzz', this.onBuzzHandler);
   }
 
   static getDerivedStateFromProps(props) {
     return {
       isActive: props.game.isBuzzerEnabled,
     };
+  }
+
+  onBuzzHandler = ({ team }) => {
+    if (team === null) {
+      return;
+    }
+    this.setState(state => {
+      if (state.team === null && state.isActive) {
+        this.props.updateGame({
+          isBuzzerEnabled: false,
+          buzzerTeam: team,
+        });
+        return {
+          team,
+          isActive: false,
+        };
+      }
+    });
   }
 
   onResetBuzzerHandler = () => {

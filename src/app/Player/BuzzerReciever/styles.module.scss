@@ -4,12 +4,35 @@
   height: 100%;
   width: 100%;
   border: $m solid transparent;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: palette(white);
+  font-family: $burger;
+  font-size: calc(2 * #{$xxl});
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .ketchup {
   border-color: palette(red);
+  .overlay {
+    background-color: fade-in(palette(red), 0.5)
+  }
+ 
 }
 
 .mayo {
   border-color: palette(yellow);
+  .overlay{
+    background-color: fade-in(palette(yellow), 0.5)
+  }
+  
 }

@@ -6,7 +6,7 @@ import { withGame } from '../../store/GameProvider';
 
 class BuzzerRecieverContainter extends Component {
   state = {
-    teamBuzzer: null,
+    teamBuzzer: this.props.game.teamBuzzer,
     isBuzzerEnabled: this.props.game.isBuzzerEnabled,
   }
 
@@ -23,7 +23,6 @@ class BuzzerRecieverContainter extends Component {
   onBuzzerUpdate = ({ team }) => {
     if (isNull(team)
         || (isNull(this.state.teamBuzzer) && this.state.isBuzzerEnabled)) {
-      console.log({ team });
       this.setState({ teamBuzzer: team });
     }
   }

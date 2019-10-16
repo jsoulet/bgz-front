@@ -10,6 +10,7 @@ $white: #fff;
     orange: #E9602E,
     black: #000,
     white: #fff,
+    gray: rgb(138, 138, 138),
   );
   $color: map-get($colors, $key);
   @if ($color) {
